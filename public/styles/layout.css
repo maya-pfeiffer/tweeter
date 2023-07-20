@@ -3,6 +3,10 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+ :root {
+  --body-font: 'Source Sans 3', sans-serif;
+  --logo-font: 'Bungee', sans-serif;
+ }
 html {
   box-sizing: border-box;
 }
@@ -10,14 +14,21 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
+.container {
+  width:90%;
+  margin: 0 auto;
+  background-color: #f4f1ec;
+}
 
 body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: var(--body-font);
+}
+
+nav {
+  font-family: var(--logo-font);
 }
 
 /*
