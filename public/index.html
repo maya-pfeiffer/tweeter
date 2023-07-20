@@ -41,6 +41,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
   </body>
+  
 </html>
 <header>
   <div class="user">
@@ -53,11 +54,19 @@
   <h2>Compose Tweet</h2>
   <form method="POST" action="/tweets">
     <label for="tweet-text"></label>
-    <textarea name="text" id="tweet-text" maxlength="140" rows="1" placeholder="What are you humming about?" spellcheck="true"></textarea>
+    <textarea name="text" id="tweet-text" rows="1" placeholder="What are you humming about?" spellcheck="true"></textarea>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
     <div class="submission">
       <button type="submit">Tweet</button>
       <output name="counter" class="counter" for="tweet-text">140</output>
     </div>
   </form>
 </section>
+<section id="tweet-container">
+<article>
+
+</article>
+</section>
 </main>
+</body>
+</html>

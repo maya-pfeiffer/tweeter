@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Events Demo</title>
+</head>
+<body>
+  <textarea id="keyboardInput" rows="5" cols="50"></textarea>
+
+  <script>
+    // Event listeners for keyboard events
+    function handleKeyDown(event) {
+      console.log("Keydown event:", event);
+    }
+
+    function handleKeyPress(event) {
+      console.log("Keypress event:", event);
+    }
+
+    function handleKeyUp(event) {
+      console.log("Keyup event:", event);
+    }
+
+    // Adding event listeners to the textarea
+    const textarea = document.getElementById('keyboardInput');
+    textarea.addEventListener('keydown', handleKeyDown);
+    textarea.addEventListener('keypress', handleKeyPress);
+    textarea.addEventListener('keyup', handleKeyUp);
+  </script>
+</body>
+</html>
