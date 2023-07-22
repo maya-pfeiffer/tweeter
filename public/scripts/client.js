@@ -1,66 +1,28 @@
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
+// Render Tweet HTML dynamically
 const createTweetElement = function(tweet) {
-  const $tweet = $('<article>').addClass('tweet-box');
-
-  const $header = $('<header>');
-  const $userInfo = $('<div>').addClass('user-info');
-  const $avatar = $('<img>').attr('src', tweet.avatar).addClass('avatar');
-  const $name = $('<span>').addClass('name').text(tweet.name);
-
-  $userInfo.append($avatar, $name);
-  $header.append($userInfo);
-  
-  const $handle = $('<div>').addClass('handle').text('@' + tweet.handle);
-
-  $header.append($handle);
-
-  const $content = $('<section>').addClass('tweet-middle');
-  const $tweetText = $('<p>').addClass('tweet-text').text(tweet.text);
-
-  $content.append($tweetText);
-
-  const $footer = $('<footer>');
-  const $date = $('<div>').addClass('date').text(tweet.date);
-  const $icons = $('<div>').addClass('icons');
-  const $flagIcon = $('<i>').addClass('fa-solid fa-flag');
-  const $retweetIcon = $('<i>').addClass('fa-solid fa-retweet');
-  const $likeIcon = $('<i>').addClass('fa-solid fa-heart');
-
-  $icons.append($flagIcon, $retweetIcon, $likeIcon);
-  $footer.append($date, $icons);
-  $tweet.append($header, $content, $footer);
-
-  const $tweetContainer = $('<section>').addClass('tweet-container');
-  
-  $tweetContainer.append($tweet);
-
-  return $tweetContainer;
+  return `<article class="tweet-box">
+    <header>
+      <div class="user-info">
+      <img src=${tweet.user.avatars} alt="Avatar" class="avatar">
+        <span class="name">${tweet.user.name}</span>
+      </div>
+      <div class="handle">${tweet.user.handle}</div>
+    </header>
+    <section class="tweet-middle">
+      <p class="tweet-text">${tweet.content.text}</p>
+    </section>
+    <footer>
+      <div class="date">${timeago.format(tweet.created_at)}</div>
+      <div class="icons">
+      <i class="fa-solid fa-flag"></i>
+      <i class="fa-solid fa-retweet"></i>
+      <i class="fa-solid fa-heart"></i>
+    </div>
+    </footer>
+  </article>`
 }
 
+// Render Tweet Feed
 const renderTweets = function(tweets) {
   $('#tweets-container').empty();
   for (const tweet of tweets) {
@@ -69,4 +31,47 @@ const renderTweets = function(tweets) {
   }
 }
 
-renderTweets(data);
+//GET and render tweets from in-memory database
+const loadTweets = function() {
+  $.ajax("http://localhost:8080/tweets", {
+    method: "GET",
+    dataType: JSON,
+    success: function() {
+    renderTweets(tweets);
+    }
+  })
+};
+
+$(document).ready(function() {
+  //submit new tweet
+  $("form").submit(function(event) {
+    event.preventDefault();
+    let $newTweet = $(this).serialize();
+    let $tweetLength = $(this).find("textarea[name='text']").val().trim().length;
+    //Confirm tweet length and return alerts if necessary
+    if ($newTweet === 'text=' || $newTweet === null || $tweetLength > 140) {
+      if ($tweetLength > 140) {
+        alert('Tweets over 140 characters are not allowed!');
+      } else if ($tweetLength === 0) {
+        alert('Empty tweets are not allowed!');
+      }
+    } else {
+    $.ajax("/tweets", {
+      method: "POST",
+      data: $newTweet
+    })
+  }
+  })
+})
+
+// Format and post new tweet
+const formatNewTweet = function() {
+  setTimeout(() => {
+    $.get( 'http://localhost:8080/tweets', (tweets) => {
+      const tweetNumber = tweets.length - 1;
+      const newTweet = tweets[tweetNumber];
+      const newTweetHtml = createTweetElement(newTweet);
+      $( '#tweets-container' ).prepend(newTweetHtml);
+    });
+  }, 100);
+};

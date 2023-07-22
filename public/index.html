@@ -27,6 +27,8 @@
     <!-- Font Awesome Library-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
+    <!-- Timeago Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
 
   <body>
@@ -53,7 +55,7 @@
 </header>
 <section class="new-tweet">
   <h2>Compose Tweet</h2>
-  <form method="POST" action="/tweets">
+  <form class="tweet-form" method="POST" action="/tweets">
     <label for="tweet-text"></label>
     <textarea name="text" id="tweet-text" rows="1" placeholder="What are you humming about?" spellcheck="true"></textarea>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
@@ -63,7 +65,7 @@
     </div>
   </form>
 </section>
-<section class="tweet-container">
+<section id="tweets-container">
 </section>
 </main>
 </body>

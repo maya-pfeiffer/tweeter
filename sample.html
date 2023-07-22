@@ -21,3 +21,37 @@
   </footer>
 </article>
 </section>
+
+const $tweet = $('<article>').addClass('tweet-box');
+
+  const $header = $('<header>');
+  const $userInfo = $('<div>').addClass('user-info');
+  const $avatar = $('<img>').attr('src', tweet.avatar).addClass('avatar');
+  const $name = $('<span>').addClass('name').text(tweet.name);
+
+  $userInfo.append($avatar, $name);
+  $header.append($userInfo);
+  
+  const $handle = $('<div>').addClass('handle').text('@' + tweet.handle);
+
+  $header.append($handle);
+
+  const $content = $('<section>').addClass('tweet-middle');
+  const $tweetText = $('<p>').addClass('tweet-text').text(tweet.text);
+
+  $content.append($tweetText);
+
+  const $footer = $('<footer>');
+  const $date = $('<div>').addClass('date').text(tweet.date);
+  const $icons = $('<div>').addClass('icons');
+  const $flagIcon = $('<i>').addClass('fa-solid fa-flag');
+  const $retweetIcon = $('<i>').addClass('fa-solid fa-retweet');
+  const $likeIcon = $('<i>').addClass('fa-solid fa-heart');
+
+  $icons.append($flagIcon, $retweetIcon, $likeIcon);
+  $footer.append($date, $icons);
+  $tweet.append($header, $content, $footer);
+
+  const $tweetContainer = $('<section>').addClass('tweet-container');
+
+  $tweetContainer.append($tweet);
