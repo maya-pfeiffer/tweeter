@@ -27,7 +27,7 @@ const renderTweets = function(tweets) {
   $('#tweets-container').empty();
   for (const tweet of tweets) {
     const $tweetElement = createTweetElement(tweet);
-    $('#tweets-container').append($tweetElement);
+    $('#tweets-container').prepend($tweetElement);
   }
 }
 
@@ -35,8 +35,8 @@ const renderTweets = function(tweets) {
 const loadTweets = function() {
   $.ajax("http://localhost:8080/tweets", {
     method: "GET",
-    dataType: JSON,
-    success: function() {
+    dataType: "json",
+    success: function(tweets) {
     renderTweets(tweets);
     }
   })
@@ -58,20 +58,12 @@ $(document).ready(function() {
     } else {
     $.ajax("/tweets", {
       method: "POST",
-      data: $newTweet
-    })
+      data: $newTweet,
+      success: function() {
+        loadTweets()
+      }
+      })
   }
   })
+  loadTweets();
 })
-
-// Format and post new tweet
-const formatNewTweet = function() {
-  setTimeout(() => {
-    $.get( 'http://localhost:8080/tweets', (tweets) => {
-      const tweetNumber = tweets.length - 1;
-      const newTweet = tweets[tweetNumber];
-      const newTweetHtml = createTweetElement(newTweet);
-      $( '#tweets-container' ).prepend(newTweetHtml);
-    });
-  }, 100);
-};
