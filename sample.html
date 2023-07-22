@@ -1,32 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keyboard Events Demo</title>
-</head>
-<body>
-  <textarea id="keyboardInput" rows="5" cols="50"></textarea>
-
-  <script>
-    // Event listeners for keyboard events
-    function handleKeyDown(event) {
-      console.log("Keydown event:", event);
-    }
-
-    function handleKeyPress(event) {
-      console.log("Keypress event:", event);
-    }
-
-    function handleKeyUp(event) {
-      console.log("Keyup event:", event);
-    }
-
-    // Adding event listeners to the textarea
-    const textarea = document.getElementById('keyboardInput');
-    textarea.addEventListener('keydown', handleKeyDown);
-    textarea.addEventListener('keypress', handleKeyPress);
-    textarea.addEventListener('keyup', handleKeyUp);
-  </script>
-</body>
-</html>
+</section>
+<section class="tweet-container">
+<article class="tweet-box">
+  <header>
+    <div class="user-info">
+    <img src="https://i.imgur.com/73hZDYK.png" alt="Avatar" class="avatar">
+      <span class="name">Newton</span>
+    </div>
+    <div class="handle">@SirIsaac</div>
+  </header>
+  <section class="tweet-middle">
+    <p class="tweet-text">If I have seen far, it is from standing on the shoulders of giants.</p>
+  </section>
+  <footer>
+    <div class="date">10 days ago</div>
+    <div class="icons">
+    <i class="fa-solid fa-flag"></i>
+    <i class="fa-solid fa-retweet"></i>
+    <i class="fa-solid fa-heart"></i>
+  </div>
+  </footer>
+</article>
+</section>
