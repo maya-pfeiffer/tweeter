@@ -3,6 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
  :root {
   --body-font: 'Source Sans 3', sans-serif;
   --logo-font: 'Bungee', sans-serif;
@@ -21,6 +22,9 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
@@ -31,6 +35,16 @@ nav {
   font-family: var(--logo-font);
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+section.feed {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  font-size: smaller;
+}
+
+@media only screen and (min-width: 768px) {
+
+section.feed {
+  font-size: inherit;
+}
+  }

@@ -1,3 +1,4 @@
+/* Form button styling */
 form button {
   font-family: "Bungee", sans-serif;
   background-color: #4056A1;
@@ -18,6 +19,7 @@ form label {
   display: flex;
 }
 
+/* Textarea form and styling */
 form textarea {
   font-family: 'Sans Source 3', sans-serif;
   font-size: larger;
@@ -38,6 +40,7 @@ textarea::placeholder {
   font-size: 25px;
 }
 
+/* Footer icons and counter styling */
 .submission {
   display: flex;
   justify-content: space-between;
@@ -54,22 +57,20 @@ textarea::placeholder {
   color: red;
 }
 
-.error-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35px;
-  margin-bottom: 65px;
-  visibility: hidden;
+/* error message container and styling */
+#error-container {
+  color: red;
+  text-align: center;
+  width: 50%;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  margin: 10px auto;
+  border: 4px solid red;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: 'Sans Source 3', sans-serif;
 }
 
-.error-message {
-  font-family: 'Sans Source 3', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: red;
-  border: 4px solid red;
-  width: 500px;
-  height: 50px
+.visibility {
+  display: none;
 }

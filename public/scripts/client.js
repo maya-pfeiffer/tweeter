@@ -48,13 +48,21 @@ $(document).ready(function() {
     event.preventDefault();
     let $newTweet = $(this).serialize();
     let $tweetLength = $(this).find("textarea[name='text']").val().trim().length;
-    //Confirm tweet length and return alerts if necessary
+    //Error handling
     if ($newTweet === 'text=' || $newTweet === null || $tweetLength > 140) {
       if ($tweetLength > 140) {
-        alert('Tweets over 140 characters are not allowed!');
-      } else if ($tweetLength === 0) {
-        alert('Empty tweets are not allowed!');
-      }
+        $( '#error-message' ).text('Tweets over 140 characters are not allowed!');
+      } else {
+        $( '#error-message' ).text('Empty tweets are not allowed!');
+      };
+        $('#error-container').slideDown('fast', () => {
+          $('#error-container').removeClass('visibility');
+          $('button').click(() => {
+            $('#error-container').slideUp('fast', () => {
+              $('#error-container').addClass('visibility');
+          });
+        });
+      });
     } else {
     $.ajax("/tweets", {
       method: "POST",
