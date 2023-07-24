@@ -42,6 +42,7 @@ const loadTweets = function() {
   })
 };
 
+
 $(document).ready(function() {
   //submit new tweet
   $("form").submit(function(event) {
@@ -55,6 +56,7 @@ $(document).ready(function() {
       } else {
         $( '#error-message' ).text('Empty tweets are not allowed!');
       };
+          //Animation for error display
         $('#error-container').slideDown('fast', () => {
           $('#error-container').removeClass('visibility');
           $('button').click(() => {

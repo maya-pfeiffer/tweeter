@@ -15,12 +15,6 @@ html {
   box-sizing: inherit;
 }
 
-.container {
-  width:90%;
-  margin: 0 auto;
-  background-color: #f4f1ec;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -35,16 +29,21 @@ nav {
   font-family: var(--logo-font);
 }
 
-section.feed {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 2;
-  font-size: smaller;
-}
-
-@media only screen and (min-width: 768px) {
-
-section.feed {
-  font-size: inherit;
-}
+@media (max-width: 768px) {
+  section#new-tweet {
+    width: 40%;
+    margin: 0 auto;
   }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  section#new-tweet {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1024px) {
+  section#new-tweet {
+    width: 35%;
+    margin-left: 125px;
+  }
+}

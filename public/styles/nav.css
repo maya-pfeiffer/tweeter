@@ -27,3 +27,19 @@ nav i {
   color: #FF0000;
   display: flex;
 }
+
+@media (max-width: 768px) {
+  nav {
+    background-color: green;
+    background-image: url(http://www.transparenttextures.com/patterns/bedge-grunge.png);
+    height: 100px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  nav {
+    background-color: green;
+    background-image: url(http://www.transparenttextures.com/patterns/bedge-grunge.png);
+    height: 100px;
+  }
+}
